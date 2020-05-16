@@ -37,8 +37,8 @@ public class VentanaPrincipal extends JFrame {
 		JMenuItem mntmAgregar = new JMenuItem("Agregar");
 		mntmAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//contentPane.removeAll();
 				PanelAgregarPersona pnlAgregarPersona = new PanelAgregarPersona();
+				contentPane.removeAll();
 				contentPane.add(pnlAgregarPersona);
 				contentPane.repaint();
 				contentPane.revalidate();
@@ -50,6 +50,7 @@ public class VentanaPrincipal extends JFrame {
 		mntmModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				PanelModificarPersona pnlModificarPersona = new PanelModificarPersona();
+				contentPane.removeAll();
 				contentPane.add(pnlModificarPersona);
 				contentPane.repaint();
 				contentPane.revalidate();
@@ -65,6 +66,6 @@ public class VentanaPrincipal extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		//contentPane.setLayout(null);
 	}
 }
