@@ -1,8 +1,5 @@
 package presentacion.vista;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -14,6 +11,10 @@ import java.awt.event.ActionEvent;
 
 public class VentanaPrincipal extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
 	/**
@@ -59,13 +60,30 @@ public class VentanaPrincipal extends JFrame {
 		mnPersona.add(mntmModificar);
 		
 		JMenuItem mntmEliminar = new JMenuItem("Eliminar");
+		mntmEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PanelEliminarPersona pnlEliminarPersona = new PanelEliminarPersona();
+				contentPane.removeAll();
+				contentPane.add(pnlEliminarPersona);
+				contentPane.repaint();
+				contentPane.revalidate();
+			}
+		});
 		mnPersona.add(mntmEliminar);
 		
 		JMenuItem mntmListar = new JMenuItem("Listar");
+		mntmListar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PanelListarPersona pnlListarPersona = new PanelListarPersona();
+				contentPane.removeAll();
+				contentPane.add(pnlListarPersona);
+				contentPane.repaint();
+				contentPane.revalidate();
+			}
+		});
 		mnPersona.add(mntmListar);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		//contentPane.setLayout(null);
 	}
 }

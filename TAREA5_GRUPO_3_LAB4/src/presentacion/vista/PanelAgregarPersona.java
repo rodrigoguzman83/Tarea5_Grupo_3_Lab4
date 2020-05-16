@@ -9,6 +9,10 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
 public class PanelAgregarPersona extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField txtNombre;
 	private JTextField txtApellido;
 	private JTextField txtDni;
