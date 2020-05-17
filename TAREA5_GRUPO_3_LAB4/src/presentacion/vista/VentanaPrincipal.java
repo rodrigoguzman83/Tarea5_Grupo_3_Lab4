@@ -11,6 +11,9 @@ import java.awt.event.ActionEvent;
 
 public class VentanaPrincipal extends JFrame {
 
+	private JMenuBar menuBar;
+	private JMenu mnPersona;
+	private JMenuItem mntmAgregar;
 	/**
 	 * 
 	 */
@@ -26,26 +29,22 @@ public class VentanaPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaPrincipal() {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 643, 414);
 		
-		JMenuBar menuBar = new JMenuBar();
+		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnPersona = new JMenu("Persona");
+		mnPersona = new JMenu("Persona");
 		menuBar.add(mnPersona);
 		
-		JMenuItem mntmAgregar = new JMenuItem("Agregar");
-		mntmAgregar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				PanelAgregarPersona pnlAgregarPersona = new PanelAgregarPersona();
-				contentPane.removeAll();
-				contentPane.add(pnlAgregarPersona);
-				contentPane.repaint();
-				contentPane.revalidate();
-			}
-		});
+		mntmAgregar = new JMenuItem("Agregar");
 		mnPersona.add(mntmAgregar);
+		
+		
+		
+		
 		
 		JMenuItem mntmModificar = new JMenuItem("Modificar");
 		mntmModificar.addActionListener(new ActionListener() {
@@ -85,5 +84,23 @@ public class VentanaPrincipal extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		
+
 	}
+	public JMenu getMnPersona() {
+		return mnPersona;
+	}
+
+	public void setMnPersona(JMenu mnPersona) {
+		this.mnPersona = mnPersona;
+	}
+
+	public JMenuItem getMntmAgregar() {
+		return mntmAgregar;
+	}
+
+	public void setMntmAgregar(JMenuItem mntmAgregar) {
+		this.mntmAgregar = mntmAgregar;
+	}
+
 }

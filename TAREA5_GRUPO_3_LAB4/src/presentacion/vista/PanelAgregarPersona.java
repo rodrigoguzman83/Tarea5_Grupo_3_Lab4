@@ -3,10 +3,14 @@ package presentacion.vista;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import dao.PersonaDao;
+import entidad.Persona;
 import javax.swing.JButton;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PanelAgregarPersona extends JPanel {
 	/**
@@ -16,6 +20,7 @@ public class PanelAgregarPersona extends JPanel {
 	private JTextField txtNombre;
 	private JTextField txtApellido;
 	private JTextField txtDni;
+	
 
 	/**
 	 * Create the panel.
@@ -80,6 +85,13 @@ public class PanelAgregarPersona extends JPanel {
 		txtDni.setColumns(10);
 		
 		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+			
+			}
+		});
 		GridBagConstraints gbc_btnAceptar = new GridBagConstraints();
 		gbc_btnAceptar.anchor = GridBagConstraints.NORTHWEST;
 		gbc_btnAceptar.gridwidth = 3;
