@@ -15,7 +15,7 @@ public class PersonaDaoImpl implements PersonaDao
  private static final String agregarPer="INSERT INTO Personas(Dni,Nombre,Apellido)values(?,?,?)";
  //private static final String borrarPer="DELETE FROM Personas WHERE Dni=?";
  //private static final String modificarPer="UPDATE Personas set Nombre=?, Apellido=? WHERE Dni=?";
- //private static final String readAll="SELECT * FROM Personas";
+ private static final String readAll="SELECT * FROM Personas";
 
  public boolean agregarPer(Persona persona) 
  {
@@ -67,6 +67,46 @@ public class PersonaDaoImpl implements PersonaDao
 		}
 		return personas;
 	}*/
+
+@Override
+public boolean borrarPer(Persona personaEliminada) {
+	// TODO Auto-generated method stub
+	return false;
+}
+
+@Override
+public boolean modificarPer(Persona personaModificada) {
+	// TODO Auto-generated method stub
+	return false;
+}
+
+@Override
+public List<Persona> readAll() {
+	PreparedStatement statement;
+	ResultSet resultSet;
+	ArrayList<Persona> Personas = new ArrayList<Persona>();
+ 	Conexion conexion = Conexion.getConexion();
+ 	try 
+ 	{
+ 		statement=conexion.getSQLConexion().prepareStatement(readAll);
+ 		resultSet = statement.executeQuery();
+ 		while(resultSet.next()) {
+ 			Personas.add(getPersona(resultSet));
+ 		}
+ 	}
+ 	catch(SQLException ex) 
+ 	{
+ 		ex.printStackTrace();
+ 	}
+ 	return Personas;
+}
+private Persona getPersona(ResultSet resultSet) throws SQLException {
+	String DNI = resultSet.getString("Dni");
+	String Nombre = resultSet.getString("Nombre");
+	String Apellido = resultSet.getString("Apellido");
+	
+	return new Persona(DNI, Nombre, Apellido);
+}
 
  
  

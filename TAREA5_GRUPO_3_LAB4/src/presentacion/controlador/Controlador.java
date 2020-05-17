@@ -34,11 +34,11 @@ public class Controlador implements ActionListener{
 		
 		//llamado de la ventana
 		this.ventanaPrincipal.getMntmAgregar().addActionListener(a-> EventoClickMenu_AbrirPanel_AgregarPersona(a));
-		this.ventanaPrincipal.getMntmModificar().addActionListener(m-> EventoClickMenu_AbrirPanel_ModificarPersona(m));
+		//this.ventanaPrincipal.getMntmModificar().addActionListener(m-> EventoClickMenu_AbrirPanel_ModificarPersona(m));
 		
 		//llamado a la accion del boton AGREGAR de Panel Agregar Persona
 		this.pnlIngresarPersona.getBtnAceptar().addActionListener(a->EventoClickBoton_AgregarPersona_PanelAgregarPersona(a));
-		this.pnlModificarPersona.getBtnModificar().addActionListener(m->EventoClickBoton_ModificarPersona_PanelModificarPersona(m));
+		//this.pnlModificarPersona.getBtnModificar().addActionListener(m->EventoClickBoton_ModificarPersona_PanelModificarPersona(m));
 		//
 	}
 
