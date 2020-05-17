@@ -35,8 +35,7 @@ public class PersonaNegocioImpl implements PersonaNegocio {
 
 	@Override
 	public List<Persona> readAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return pdao.readAll();
 	}
 
 }

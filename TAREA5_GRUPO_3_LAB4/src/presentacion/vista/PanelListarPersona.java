@@ -1,15 +1,15 @@
 package presentacion.vista;
 import entidad.Persona;
 
+import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
-import java.util.Iterator;
-
+import javax.swing.BoxLayout;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 
 public class PanelListarPersona extends JPanel {
@@ -28,6 +28,7 @@ public class PanelListarPersona extends JPanel {
 	};
 	
 	public void initialize() {
+		
 		gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{101, 247, 0};
 		gridBagLayout.rowHeights = new int[]{30, 235, 0};
@@ -35,7 +36,15 @@ public class PanelListarPersona extends JPanel {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		table = new JTable();
+		
+		JScrollPane spPersonas = new JScrollPane();
+		
+		
+		modelPersona = new DefaultTableModel(null,NomColumnas);
+		table = new JTable(modelPersona);
+		spPersonas.setViewportView(table);
+		
+		
 		GridBagConstraints gbc_table = new GridBagConstraints();
 		gbc_table.fill = GridBagConstraints.BOTH;
 		gbc_table.gridx = 1;
@@ -80,7 +89,9 @@ public class PanelListarPersona extends JPanel {
 			String Dni=per.getDni();
 			Object[] Fila = {Nombre, Apellido, Dni};
 			this.getModelPersona().addRow(Fila);
+			
 		}
+	
 			
 	}
 		
