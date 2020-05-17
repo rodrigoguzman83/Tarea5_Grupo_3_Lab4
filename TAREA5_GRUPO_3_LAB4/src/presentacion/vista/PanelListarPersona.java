@@ -32,7 +32,7 @@ public class PanelListarPersona extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 		table = new JTable(modelPersona);
 		table.setBounds(40, 31, 348, 235);
-		add(table);
+		
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 11, 348, 235);
