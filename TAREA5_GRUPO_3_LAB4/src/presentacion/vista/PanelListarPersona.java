@@ -15,11 +15,9 @@ import javax.swing.table.DefaultTableModel;
 public class PanelListarPersona extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private GridBagLayout gridBagLayout;
 	private JTable table;
 	private DefaultTableModel modelPersona;
 	private String[] NomColumnas = {"Nombre", "Apellido","Dni"};
-
 	
 	
 	public PanelListarPersona() {
@@ -29,6 +27,7 @@ public class PanelListarPersona extends JPanel {
 	
 	public void initialize() {
 		
+<<<<<<< HEAD
 		modelPersona = new DefaultTableModel(null,NomColumnas); 		
 		setLayout(new BorderLayout(0, 0)); 		
 		table = new JTable(modelPersona); 		
@@ -40,6 +39,25 @@ public class PanelListarPersona extends JPanel {
 		JScrollPane spPersonas = new JScrollPane(); 		
 		panel.add(spPersonas); 		 		
 		spPersonas.setViewportView(table); 
+=======
+								
+		modelPersona = new DefaultTableModel(null,NomColumnas);
+		setLayout(new BorderLayout(0, 0));
+		table = new JTable(modelPersona);
+		table.setBounds(40, 31, 348, 235);
+		
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(10, 11, 348, 235);
+		add(panel, BorderLayout.CENTER);
+		panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+		
+		JScrollPane spPersonas = new JScrollPane();
+		panel.add(spPersonas);
+		
+		spPersonas.setViewportView(table);
+		
+>>>>>>> branch 'master' of https://github.com/rodrigoguzman83/Tarea5_Grupo_3_Lab4.git
 	}
 
 	public JTable getTable() {
@@ -84,6 +102,4 @@ public class PanelListarPersona extends JPanel {
 	
 			
 	}
-		
-
 }
