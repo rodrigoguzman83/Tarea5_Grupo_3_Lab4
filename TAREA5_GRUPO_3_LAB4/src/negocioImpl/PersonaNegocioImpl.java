@@ -24,9 +24,9 @@ public class PersonaNegocioImpl implements PersonaNegocio {
 	public boolean borrarPer(Persona personaEliminada) {
 		boolean estado= false;
 		if(personaEliminada.getDni().trim().length()>0) {
-			estado=pdao.borrarPer(personaEliminada);
+			estado=pdao.borrarPer(personaEliminada); 
 		}
-		return estado;
+		return estado; 
 	}
 
 	@Override

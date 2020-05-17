@@ -26,7 +26,7 @@ public class Persona {
 	}
 	
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.nombre = nombre; 
 	}
 	
 	public String getApellido() {
@@ -39,6 +39,6 @@ public class Persona {
 
 	@Override
 	public String toString() {
-		return "Persona [dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + "]";
+		return "Nombre: " + nombre + " Apellido: " + apellido + " DNI: " + dni ;
 	}
 }

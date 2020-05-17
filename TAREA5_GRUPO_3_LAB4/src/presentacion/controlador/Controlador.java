@@ -37,6 +37,7 @@ public class Controlador implements ActionListener{
 		//Instancias
 		this.ventanaPrincipal=vista;
 		this.perNeg=perNeg;
+		listModel = new DefaultListModel<Persona>();
 		
 		
 		//Instancias Paneles
@@ -61,7 +62,20 @@ public class Controlador implements ActionListener{
 
 	
 	public void EventoClickBoton_EliminarPersona_PanelEliminarPersona(ActionEvent e) {
+		boolean estado=false;
+		Persona person = this.pnlEliminarPersona.getJlistEliminarUsuarios().getSelectedValue();
 		
+		estado = perNeg.borrarPer(person);
+		String mensaje ;
+		if(estado == true) {
+			mensaje = "Persona eliminada con exito ";
+		}
+		else {
+			mensaje = "No se pudo eliminar la persona";
+		}
+		
+		this.pnlEliminarPersona.mostrarMensaje(mensaje);
+		refrescarListaEliminar();
 	}
 
 
@@ -128,10 +142,11 @@ public class Controlador implements ActionListener{
 	
 	public void refrescarListaEliminar() {
 		listaPersona=(ArrayList<Persona>) perNeg.readAll();
+		listModel.clear();
 		for(Persona item:listaPersona) {
 			listModel.addElement(item);
-			pnlEliminarPersona.setListModel(listModel);
 		}
+		pnlEliminarPersona.setListModel(listModel);
 	}
 	//PARA EJECUTAR LA VENTANA DE AGREGAR
 

@@ -76,7 +76,7 @@ public boolean modificarPer(Persona personaModificada) {
 }
 
 @Override
-public List<Persona> readAll() {
+public List<Persona> readAll() { 
 	PreparedStatement statement;
 	ResultSet resultSet;
 	ArrayList<Persona> Personas = new ArrayList<Persona>();
