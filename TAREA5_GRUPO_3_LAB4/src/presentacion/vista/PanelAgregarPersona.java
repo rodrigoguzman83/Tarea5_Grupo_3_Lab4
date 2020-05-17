@@ -2,6 +2,7 @@ package presentacion.vista;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import dao.PersonaDao;
 import entidad.Persona;
@@ -20,12 +21,54 @@ public class PanelAgregarPersona extends JPanel {
 	private JTextField txtNombre;
 	private JTextField txtApellido;
 	private JTextField txtDni;
+	private JButton btnAceptar;
 	
 
-	/**
-	 * Create the panel.
-	 */
 	public PanelAgregarPersona() {
+		super();
+		initialize();
+	}
+	
+	
+	public JTextField getTxtNombre() {
+		return txtNombre;
+	}
+
+
+	public void setTxtNombre(JTextField txtNombre) {
+		this.txtNombre = txtNombre;
+	}
+
+
+	public JTextField getTxtApellido() {
+		return txtApellido;
+	}
+
+
+	public void setTxtApellido(JTextField txtApellido) {
+		this.txtApellido = txtApellido;
+	}
+
+
+	public JTextField getTxtDni() {
+		return txtDni;
+	}
+
+
+	public void setTxtDni(JTextField txtDni) {
+		this.txtDni = txtDni;
+	}
+	
+	public JButton getBtnAceptar() {
+		return btnAceptar;
+	}
+
+
+	public void setBtnAceptar(JButton btnAceptar) {
+		this.btnAceptar = btnAceptar;
+	}
+
+	private void initialize() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{42, 92, 32, 186, 0};
 		gridBagLayout.rowHeights = new int[]{66, 32, 32, 32, 54, 35, 0};
@@ -84,12 +127,9 @@ public class PanelAgregarPersona extends JPanel {
 		add(txtDni, gbc_txtDni);
 		txtDni.setColumns(10);
 		
-		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				
-			
 			}
 		});
 		GridBagConstraints gbc_btnAceptar = new GridBagConstraints();
@@ -98,6 +138,11 @@ public class PanelAgregarPersona extends JPanel {
 		gbc_btnAceptar.gridx = 1;
 		gbc_btnAceptar.gridy = 5;
 		add(btnAceptar, gbc_btnAceptar);
+	}
 
+
+	public void mostrarMensaje(String mensaje) {
+		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(null, mensaje);
 	}
 }

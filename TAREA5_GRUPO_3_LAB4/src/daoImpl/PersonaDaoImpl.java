@@ -7,14 +7,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.PersonaDao;
 import entidad.Persona;
 
 public class PersonaDaoImpl implements PersonaDao
 {
  private static final String agregarPer="INSERT INTO Personas(Dni,Nombre,Apellido)values(?,?,?)";
- private static final String borrarPer="DELETE FROM Personas WHERE Dni=?";
- private static final String modificarPer="UPDATE Personas set Nombre=?, Apellido=? WHERE Dni=?";
- private static final String readAll="SELECT * FROM Personas";
+ //private static final String borrarPer="DELETE FROM Personas WHERE Dni=?";
+ //private static final String modificarPer="UPDATE Personas set Nombre=?, Apellido=? WHERE Dni=?";
+ //private static final String readAll="SELECT * FROM Personas";
 
  public boolean agregarPer(Persona persona) 
  {
@@ -45,7 +46,7 @@ public class PersonaDaoImpl implements PersonaDao
  	return isInsertExitoso;
  	
  }
- public List<Persona> readAll()
+ /*public List<Persona> readAll()
 	{
 		PreparedStatement statement;
 		ResultSet resultSet; //Guarda el resultado de la query
@@ -65,7 +66,7 @@ public class PersonaDaoImpl implements PersonaDao
 			e.printStackTrace();
 		}
 		return personas;
-	}
+	}*/
 
  
  
