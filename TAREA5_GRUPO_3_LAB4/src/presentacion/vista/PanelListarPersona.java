@@ -29,27 +29,17 @@ public class PanelListarPersona extends JPanel {
 	
 	public void initialize() {
 		
-		gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{101, 247, 0};
-		gridBagLayout.rowHeights = new int[]{30, 235, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		setLayout(gridBagLayout);
-		
-		
-		JScrollPane spPersonas = new JScrollPane();
-		
-		
-		modelPersona = new DefaultTableModel(null,NomColumnas);
-		table = new JTable(modelPersona);
-		spPersonas.setViewportView(table);
-		
-		
-		GridBagConstraints gbc_table = new GridBagConstraints();
-		gbc_table.fill = GridBagConstraints.BOTH;
-		gbc_table.gridx = 1;
-		gbc_table.gridy = 1;
-		add(table, gbc_table);
+		modelPersona = new DefaultTableModel(null,NomColumnas); 		
+		setLayout(new BorderLayout(0, 0)); 		
+		table = new JTable(modelPersona); 		
+		table.setBounds(40, 31, 348, 235); 		 		 		
+		JPanel panel = new JPanel(); 		
+		panel.setBounds(10, 11, 348, 235); 		
+		add(panel, BorderLayout.CENTER); 		
+		panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS)); 		 		
+		JScrollPane spPersonas = new JScrollPane(); 		
+		panel.add(spPersonas); 		 		
+		spPersonas.setViewportView(table); 
 	}
 
 	public JTable getTable() {
@@ -71,7 +61,7 @@ public class PanelListarPersona extends JPanel {
 		return NomColumnas;
 	}
 
-	public void setNomColumnas(String[] nomColumnas) {
+	public void setNomColumnas(String[] nomColumnas) { 
 		NomColumnas = nomColumnas;
 	}
 

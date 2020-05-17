@@ -16,6 +16,7 @@ public class VentanaPrincipal extends JFrame {
 	private JMenuItem mntmAgregar;
 	private JMenuItem mntmModificar;
 	private JMenuItem mntmListar;
+	private JMenuItem mntmEliminar;
 	/**
 	 * 
 	 */
@@ -50,36 +51,20 @@ public class VentanaPrincipal extends JFrame {
 		mntmListar=new JMenuItem("Listar");
 		mnPersona.add(mntmListar);
 		
-		
-		
-		
-		JMenuItem mntmEliminar = new JMenuItem("Eliminar");
-		mntmEliminar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				PanelEliminarPersona pnlEliminarPersona = new PanelEliminarPersona();
-				contentPane.removeAll();
-				contentPane.add(pnlEliminarPersona);
-				contentPane.repaint();
-				contentPane.revalidate();
-			}
-		});
+		mntmEliminar = new JMenuItem("Eliminar");
 		mnPersona.add(mntmEliminar);
 		
-//		JMenuItem mntmListar = new JMenuItem("Listar");
-//		mntmListar.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				PanelListarPersona pnlListarPersona = new PanelListarPersona();
-//				contentPane.removeAll();
-//				contentPane.add(pnlListarPersona);
-//				contentPane.repaint();
-//				contentPane.revalidate();
-//			}
-//		});
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
 
+	}
+	public JMenuItem getMntmEliminar() {
+		return mntmEliminar;
+	} 
+	public void setMntmEliminar(JMenuItem mntmEliminar) {
+		this.mntmEliminar = mntmEliminar;
 	}
 	public JMenuItem getMntmModificar() {
 		return mntmModificar;

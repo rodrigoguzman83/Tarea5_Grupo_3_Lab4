@@ -13,7 +13,6 @@ public class PersonaNegocioImpl implements PersonaNegocio {
 
 	@Override
 	public boolean agregarPer(Persona personaAgregada) {
-		// TODO Auto-generated method stub
 		boolean estado = false;
 		if(personaAgregada.getNombre().trim().length()>0 && personaAgregada.getApellido().trim().length()>0 && personaAgregada.getDni().trim().length()>0) {
 			estado=pdao.agregarPer(personaAgregada);
@@ -23,8 +22,11 @@ public class PersonaNegocioImpl implements PersonaNegocio {
 
 	@Override
 	public boolean borrarPer(Persona personaEliminada) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean estado= false;
+		if(personaEliminada.getDni().trim().length()>0) {
+			estado=pdao.borrarPer(personaEliminada);
+		}
+		return estado;
 	}
 
 	@Override

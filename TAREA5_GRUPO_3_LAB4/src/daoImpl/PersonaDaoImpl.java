@@ -13,7 +13,7 @@ import entidad.Persona;
 public class PersonaDaoImpl implements PersonaDao
 {
  private static final String agregarPer="INSERT INTO Personas(Dni,Nombre,Apellido)values(?,?,?)";
- //private static final String borrarPer="DELETE FROM Personas WHERE Dni=?";
+ private static final String borrarPer="DELETE FROM Personas WHERE Dni=?";
  //private static final String modificarPer="UPDATE Personas set Nombre=?, Apellido=? WHERE Dni=?";
  private static final String readAll="SELECT * FROM Personas";
 
@@ -46,32 +46,27 @@ public class PersonaDaoImpl implements PersonaDao
  	return isInsertExitoso;
  	
  }
- /*public List<Persona> readAll()
-	{
-		PreparedStatement statement;
-		ResultSet resultSet; //Guarda el resultado de la query
-		ArrayList<Persona> personas = new ArrayList<Persona>();
-		Conexion conexion = Conexion.getConexion();
-		try 
-		{
-			statement = conexion.getSQLConexion().prepareStatement(readAll);
-			resultSet = statement.executeQuery();
-			while(resultSet.next())
-			{
-				personas.add(getPersona(resultSet));
-			}
-		} 
-		catch (SQLException e) 
-		{
-			e.printStackTrace();
-		}
-		return personas;
-	}*/
 
 @Override
 public boolean borrarPer(Persona personaEliminada) {
+	PreparedStatement statement;
+	Connection conexion = Conexion.getConexion().getSQLConexion();
+	boolean estado=false;
+	
+	try{
+		statement=conexion.prepareStatement(borrarPer);
+		statement.setString(1, personaEliminada.getDni());
+		
+		if(statement.executeUpdate()>0) {
+			conexion.commit();
+			estado=true;
+		}
+	}
+	catch(Exception ex) {
+		ex.printStackTrace();
+	}
 	// TODO Auto-generated method stub
-	return false;
+	return estado;
 }
 
 @Override
@@ -100,6 +95,7 @@ public List<Persona> readAll() {
  	}
  	return Personas;
 }
+
 private Persona getPersona(ResultSet resultSet) throws SQLException {
 	String DNI = resultSet.getString("Dni");
 	String Nombre = resultSet.getString("Nombre");
