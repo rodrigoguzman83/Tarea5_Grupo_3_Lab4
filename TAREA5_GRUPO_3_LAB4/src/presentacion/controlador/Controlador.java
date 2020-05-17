@@ -10,6 +10,7 @@ import entidad.Persona;
 import negocio.PersonaNegocio;
 import presentacion.vista.VentanaPrincipal;
 import presentacion.vista.PanelAgregarPersona;
+import presentacion.vista.PanelListarPersona;
 import presentacion.vista.PanelModificarPersona;
 
 
@@ -18,7 +19,10 @@ public class Controlador implements ActionListener{
 	private VentanaPrincipal ventanaPrincipal;
 	private PanelAgregarPersona pnlIngresarPersona;
 	private PanelModificarPersona pnlModificarPersona;
+	private PanelListarPersona pnlListarPersona;
 	private PersonaNegocio perNeg;
+	private ArrayList<Persona> listaPersona;
+	
 	
 	//Constructor
 	public Controlador(VentanaPrincipal vista,PersonaNegocio perNeg) 
@@ -28,21 +32,38 @@ public class Controlador implements ActionListener{
 		this.ventanaPrincipal=vista;
 		this.perNeg=perNeg;
 		
+		
 		//Instancias Paneles
 		this.pnlIngresarPersona=new PanelAgregarPersona();
 		this.pnlModificarPersona = new PanelModificarPersona();
+		this.pnlListarPersona=new PanelListarPersona();
 		
 		//llamado de la ventana
 		this.ventanaPrincipal.getMntmAgregar().addActionListener(a-> EventoClickMenu_AbrirPanel_AgregarPersona(a));
 		//this.ventanaPrincipal.getMntmModificar().addActionListener(m-> EventoClickMenu_AbrirPanel_ModificarPersona(m));
+		this.ventanaPrincipal.getMntmListar().addActionListener(l->EventoClickMenu_AbrirPanel_Listar(l));
 		
-		//llamado a la accion del boton AGREGAR de Panel Agregar Persona
+		//llamado a la accion de los botones  
 		this.pnlIngresarPersona.getBtnAceptar().addActionListener(a->EventoClickBoton_AgregarPersona_PanelAgregarPersona(a));
+		
 		//this.pnlModificarPersona.getBtnModificar().addActionListener(m->EventoClickBoton_ModificarPersona_PanelModificarPersona(m));
 		//
 	}
 
 	
+	public void EventoClickMenu_AbrirPanel_Listar(ActionEvent l) {
+		
+		ventanaPrincipal.getContentPane().removeAll();
+		ventanaPrincipal.getContentPane().add(pnlListarPersona);
+		ventanaPrincipal.getContentPane().repaint();
+		ventanaPrincipal.getContentPane().revalidate();
+		
+		listaPersona=(ArrayList<Persona>)perNeg.readAll();
+		pnlListarPersona.cargarTabla(listaPersona);
+		
+	}
+
+
 	public void EventoClickBoton_AgregarPersona_PanelAgregarPersona(ActionEvent a) {
 		// TODO Auto-generated method stub
 		String dni = this.pnlIngresarPersona.getTxtDni().getText();

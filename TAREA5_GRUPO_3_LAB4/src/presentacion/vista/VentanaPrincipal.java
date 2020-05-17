@@ -15,6 +15,7 @@ public class VentanaPrincipal extends JFrame {
 	private JMenu mnPersona;
 	private JMenuItem mntmAgregar;
 	private JMenuItem mntmModificar;
+	private JMenuItem mntmListar;
 	/**
 	 * 
 	 */
@@ -46,6 +47,9 @@ public class VentanaPrincipal extends JFrame {
 		mntmModificar = new JMenuItem("Modificar");
 		mnPersona.add(mntmModificar);
 		
+		mntmListar=new JMenuItem("Listar");
+		mnPersona.add(mntmListar);
+		
 		
 		
 		
@@ -61,17 +65,16 @@ public class VentanaPrincipal extends JFrame {
 		});
 		mnPersona.add(mntmEliminar);
 		
-		JMenuItem mntmListar = new JMenuItem("Listar");
-		mntmListar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				PanelListarPersona pnlListarPersona = new PanelListarPersona();
-				contentPane.removeAll();
-				contentPane.add(pnlListarPersona);
-				contentPane.repaint();
-				contentPane.revalidate();
-			}
-		});
-		mnPersona.add(mntmListar);
+//		JMenuItem mntmListar = new JMenuItem("Listar");
+//		mntmListar.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				PanelListarPersona pnlListarPersona = new PanelListarPersona();
+//				contentPane.removeAll();
+//				contentPane.add(pnlListarPersona);
+//				contentPane.repaint();
+//				contentPane.revalidate();
+//			}
+//		});
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -98,6 +101,12 @@ public class VentanaPrincipal extends JFrame {
 
 	public void setMntmAgregar(JMenuItem mntmAgregar) {
 		this.mntmAgregar = mntmAgregar;
+	}
+	public JMenuItem getMntmListar() {
+		return mntmListar;
+	}
+	public void setMntmListar(JMenuItem mntmListar) {
+		this.mntmListar = mntmListar;
 	}
 
 }
