@@ -10,12 +10,14 @@ import entidad.Persona;
 import negocio.PersonaNegocio;
 import presentacion.vista.VentanaPrincipal;
 import presentacion.vista.PanelAgregarPersona;
+import presentacion.vista.PanelModificarPersona;
 
 
 public class Controlador implements ActionListener{
 	
 	private VentanaPrincipal ventanaPrincipal;
 	private PanelAgregarPersona pnlIngresarPersona;
+	private PanelModificarPersona pnlModificarPersona;
 	private PersonaNegocio perNeg;
 	
 	//Constructor
@@ -28,13 +30,15 @@ public class Controlador implements ActionListener{
 		
 		//Instancias Paneles
 		this.pnlIngresarPersona=new PanelAgregarPersona();
+		this.pnlModificarPersona = new PanelModificarPersona();
 		
 		//llamado de la ventana
 		this.ventanaPrincipal.getMntmAgregar().addActionListener(a-> EventoClickMenu_AbrirPanel_AgregarPersona(a));
+		this.ventanaPrincipal.getMntmModificar().addActionListener(m-> EventoClickMenu_AbrirPanel_ModificarPersona(m));
 		
 		//llamado a la accion del boton AGREGAR de Panel Agregar Persona
 		this.pnlIngresarPersona.getBtnAceptar().addActionListener(a->EventoClickBoton_AgregarPersona_PanelAgregarPersona(a));
-		
+		this.pnlModificarPersona.getBtnModificar().addActionListener(m->EventoClickBoton_ModificarPersona_PanelModificarPersona(m));
 		//
 	}
 
@@ -70,6 +74,14 @@ public class Controlador implements ActionListener{
 		 ventanaPrincipal.getContentPane().repaint();
 		 ventanaPrincipal.getContentPane().revalidate();
 	} 
+	
+	//BOTON MODIFICAR PERSONA
+	public void eventoClickMenu_AbrirPanel_ModificarPersona(ActionEvent e) {
+		String dni = this.pnlModificarPersona.getTxtDni().getText();
+		String nombre = this.pnlModificarPersona.getTxtNombre().getText();
+		String apellido = this.pnlModificarPersona.getTxtApellido().getText();
+		
+	}
 	
 	//PARA EJECUTAR LA VENTANA DE AGREGAR
 

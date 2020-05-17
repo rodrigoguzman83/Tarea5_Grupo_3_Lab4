@@ -21,11 +21,51 @@ public class PanelModificarPersona extends JPanel {
 	private JTextField txtNombre;
 	private JTextField txtApellido;
 	private JTextField txtDni;
+	private JButton btnModificar;
 
 	/**
 	 * Create the panel.
 	 */
+	
 	public PanelModificarPersona() {
+		super();
+		initialize();
+	}
+	
+	public JTextField getTxtNombre() {
+		return txtNombre;
+	}
+
+	public void setTxtNombre(JTextField txtNombre) {
+		this.txtNombre = txtNombre;
+	}
+	
+	public JTextField getTxtApellido() {
+		return txtApellido;
+	}
+
+	public void setTxtApellido(JTextField txtApellido) {
+		this.txtApellido = txtApellido;
+	}
+
+	public JTextField getTxtDni() {
+		return txtDni;
+	}
+
+	public void setTxtDni(JTextField txtDni) {
+		this.txtDni = txtDni;
+	}
+	
+	public JButton getBtnModificar() {
+		return btnModificar;
+	}
+
+	public void setBtnModificar(JButton btnModificar) {
+		this.btnModificar = btnModificar;
+	}
+	
+	
+	private void initialize() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{101, 101, 101, 97, 0};
 		gridBagLayout.rowHeights = new int[]{26, 172, 18, 0};
@@ -79,7 +119,7 @@ public class PanelModificarPersona extends JPanel {
 		add(txtDni, gbc_txtDni);
 		txtDni.setColumns(10);
 		
-		JButton btnModificar = new JButton("Modificar");
+		btnModificar = new JButton("Modificar");
 		btnModificar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		GridBagConstraints gbc_btnModificar = new GridBagConstraints();
 		gbc_btnModificar.anchor = GridBagConstraints.WEST;

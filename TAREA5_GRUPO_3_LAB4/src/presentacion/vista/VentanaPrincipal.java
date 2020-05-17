@@ -14,6 +14,7 @@ public class VentanaPrincipal extends JFrame {
 	private JMenuBar menuBar;
 	private JMenu mnPersona;
 	private JMenuItem mntmAgregar;
+	private JMenuItem mntmModificar;
 	/**
 	 * 
 	 */
@@ -42,21 +43,11 @@ public class VentanaPrincipal extends JFrame {
 		mntmAgregar = new JMenuItem("Agregar");
 		mnPersona.add(mntmAgregar);
 		
-		
-		
-		
-		
-		JMenuItem mntmModificar = new JMenuItem("Modificar");
-		mntmModificar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				PanelModificarPersona pnlModificarPersona = new PanelModificarPersona();
-				contentPane.removeAll();
-				contentPane.add(pnlModificarPersona);
-				contentPane.repaint();
-				contentPane.revalidate();
-			}
-		});
+		mntmModificar = new JMenuItem("Modificar");
 		mnPersona.add(mntmModificar);
+		
+		
+		
 		
 		JMenuItem mntmEliminar = new JMenuItem("Eliminar");
 		mntmEliminar.addActionListener(new ActionListener() {
@@ -86,6 +77,12 @@ public class VentanaPrincipal extends JFrame {
 		setContentPane(contentPane);
 		
 
+	}
+	public JMenuItem getMntmModificar() {
+		return mntmModificar;
+	}
+	public void setMntmModificar(JMenuItem mntmModificar) {
+		this.mntmModificar = mntmModificar;
 	}
 	public JMenu getMnPersona() {
 		return mnPersona;
