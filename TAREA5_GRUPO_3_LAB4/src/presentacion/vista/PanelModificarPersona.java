@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 
 import entidad.Persona;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -22,6 +23,9 @@ public class PanelModificarPersona extends JPanel {
 	private JTextField txtApellido;
 	private JTextField txtDni;
 	private JButton btnModificar;
+	private JList<Persona> JListaModificarUsuario;
+	private DefaultListModel<Persona> listModel;
+	
 
 	/**
 	 * Create the panel.
@@ -63,7 +67,27 @@ public class PanelModificarPersona extends JPanel {
 	public void setBtnModificar(JButton btnModificar) {
 		this.btnModificar = btnModificar;
 	}
+	public JList<Persona> getListaModificarUsuario() {
+		return JListaModificarUsuario;
+	}
+
+	public void setListaModificarUsuario(JList<Persona> listaModificarUsuario) {
+		this.JListaModificarUsuario = listaModificarUsuario;
+	}
+
+	public DefaultListModel<Persona> getListModel() {
+		return listModel;
+	}
+
+	public void setListModel(DefaultListModel<Persona> listModel) {
+		this.listModel = listModel;
+	}
 	
+	public void setListModelClear(DefaultListModel<Persona>listModel) 
+	{
+		listModel.clear();
+		this.JListaModificarUsuario.setModel(listModel);
+	}
 	
 	private void initialize() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -127,6 +151,5 @@ public class PanelModificarPersona extends JPanel {
 		gbc_btnModificar.gridx = 3;
 		gbc_btnModificar.gridy = 2;
 		add(btnModificar, gbc_btnModificar);
-
 	}
 }

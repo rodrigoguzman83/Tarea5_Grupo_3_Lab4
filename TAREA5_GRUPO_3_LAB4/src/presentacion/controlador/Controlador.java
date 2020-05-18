@@ -48,7 +48,7 @@ public class Controlador implements ActionListener{
 		
 		//llamado de la ventana
 		this.ventanaPrincipal.getMntmAgregar().addActionListener(a-> EventoClickMenu_AbrirPanel_AgregarPersona(a));
-		//this.ventanaPrincipal.getMntmModificar().addActionListener(m-> EventoClickMenu_AbrirPanel_ModificarPersona(m));
+		this.ventanaPrincipal.getMntmModificar().addActionListener(m-> EventoClickMenu_AbrirPanel_ModificarPersona(m));
 		this.ventanaPrincipal.getMntmListar().addActionListener(l->EventoClickMenu_AbrirPanel_Listar(l));
 		this.ventanaPrincipal.getMntmEliminar().addActionListener(e-> EventoClickMenu_AbrirPanel_ElmininarPersona(e));
 		
@@ -56,11 +56,11 @@ public class Controlador implements ActionListener{
 		this.pnlIngresarPersona.getBtnAceptar().addActionListener(a->EventoClickBoton_AgregarPersona_PanelAgregarPersona(a));
 		this.pnlEliminarPersona.getBtnEliminarUsuario().addActionListener(e->EventoClickBoton_EliminarPersona_PanelEliminarPersona(e));
 		
-		//this.pnlModificarPersona.getBtnModificar().addActionListener(m->EventoClickBoton_ModificarPersona_PanelModificarPersona(m));
+		this.pnlModificarPersona.getBtnModificar().addActionListener(m->EventoClickBoton_ModificarPersona_PanelModificarPersona(m));
 		//
 	}
 
-	
+
 	public void EventoClickBoton_EliminarPersona_PanelEliminarPersona(ActionEvent e) {
 		boolean estado=false;
 		Persona person = this.pnlEliminarPersona.getJlistEliminarUsuarios().getSelectedValue();
@@ -86,7 +86,7 @@ public class Controlador implements ActionListener{
 		ventanaPrincipal.getContentPane().repaint();
 		ventanaPrincipal.getContentPane().revalidate();
 		pnlEliminarPersona.setListModelClear(listModel);
-		 refrescarListaEliminar();
+		refrescarListaEliminar();
 	}
 
 	public void EventoClickMenu_AbrirPanel_Listar(ActionEvent l) {
@@ -132,12 +132,31 @@ public class Controlador implements ActionListener{
 		 ventanaPrincipal.getContentPane().revalidate();
 	} 
 	
- 	//BOTON MODIFICAR PERSONA
-	public void eventoClickMenu_AbrirPanel_ModificarPersona(ActionEvent e) {
+ 	//BOTON DEL PANEL MODIFICAR PERSONA
+	public void EventoClickMenu_AbrirPanel_ModificarPersona(ActionEvent e) {
+		ventanaPrincipal.getContentPane().removeAll();
+		ventanaPrincipal.getContentPane().add(pnlModificarPersona);
+		ventanaPrincipal.getContentPane().repaint();
+		ventanaPrincipal.getContentPane().revalidate();
+		pnlModificarPersona.setListModelClear(listModel);
+		refrescarListaModificar();
+		
+	}
+
+	public void EventoClickBoton_ModificarPersona_PanelModificarPersona(ActionEvent m) {
 		String dni = this.pnlModificarPersona.getTxtDni().getText();
 		String nombre = this.pnlModificarPersona.getTxtNombre().getText();
 		String apellido = this.pnlModificarPersona.getTxtApellido().getText();
-		
+	}
+	
+	public void refrescarListaModificar() {
+		listaPersona=(ArrayList<Persona>) perNeg.readAll();
+		JOptionPane.showMessageDialog(null, listapersona);
+		listModel.clear();
+		for(Persona item:listaPersona) {
+			listModel.addElement(item);
+		}
+		pnlModificarPersona.setListModel(listModel);
 	}
 	
 	public void refrescarListaEliminar() {
