@@ -151,7 +151,6 @@ public class Controlador implements ActionListener{
 	
 	public void refrescarListaModificar() {
 		listaPersona=(ArrayList<Persona>) perNeg.readAll();
-		JOptionPane.showMessageDialog(null, listapersona);
 		listModel.clear();
 		for(Persona item:listaPersona) {
 			listModel.addElement(item);
