@@ -13,6 +13,8 @@ import javax.swing.JButton;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PanelModificarPersona extends JPanel {
 	/**
@@ -40,8 +42,8 @@ public class PanelModificarPersona extends JPanel {
 		return txtNombre;
 	}
 
-	public void setTxtNombre(JTextField txtNombre) {
-		this.txtNombre = txtNombre;
+	public void setTxtNombre(String nombre) {
+		txtNombre.setText(nombre);
 	}
 	
 	public JTextField getTxtApellido() {
@@ -107,14 +109,20 @@ public class PanelModificarPersona extends JPanel {
 		gbc_lblSeleccioneLasPersonas.gridy = 0;
 		add(lblSeleccioneLasPersonas, gbc_lblSeleccioneLasPersonas);
 		
-		JList<Persona> listModificar = new JList<Persona>();
+		JListaModificarUsuario = new JList<Persona>();
+	/*	JListaModificarUsuario.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});*/
+		
 		GridBagConstraints gbc_listModificar = new GridBagConstraints();
 		gbc_listModificar.fill = GridBagConstraints.BOTH;
 		gbc_listModificar.insets = new Insets(0, 0, 5, 0);
 		gbc_listModificar.gridwidth = 4;
 		gbc_listModificar.gridx = 0;
 		gbc_listModificar.gridy = 1;
-		add(listModificar, gbc_listModificar);
+		add(JListaModificarUsuario, gbc_listModificar);
 		
 		txtNombre = new JTextField();
 		GridBagConstraints gbc_txtNombre = new GridBagConstraints();
@@ -151,5 +159,10 @@ public class PanelModificarPersona extends JPanel {
 		gbc_btnModificar.gridx = 3;
 		gbc_btnModificar.gridy = 2;
 		add(btnModificar, gbc_btnModificar);
+	}
+
+	public JList<Persona> getList() {
+		// TODO Auto-generated method stub
+		return JListaModificarUsuario;
 	}
 }

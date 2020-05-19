@@ -13,6 +13,10 @@ public class Persona {
 		this.apellido = apellido;
 	}
 
+	public Persona() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getDni() {
 		return dni;
 	}

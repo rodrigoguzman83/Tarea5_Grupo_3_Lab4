@@ -2,6 +2,8 @@ package presentacion.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
@@ -25,7 +27,9 @@ public class Controlador implements ActionListener{
 	private PanelModificarPersona pnlModificarPersona;
 	private PanelListarPersona pnlListarPersona;
 	private PanelEliminarPersona pnlEliminarPersona;
+	private MouseListener Click;
 	private PersonaNegocio perNeg;
+	private JList<Persona> listadoPersona;
 	private ArrayList<Persona> listaPersona;
 	private DefaultListModel<Persona> listModel;
 	
@@ -38,7 +42,6 @@ public class Controlador implements ActionListener{
 		this.ventanaPrincipal=vista;
 		this.perNeg=perNeg;
 		listModel = new DefaultListModel<Persona>();
-		
 		
 		//Instancias Paneles
 		this.pnlIngresarPersona=new PanelAgregarPersona();
@@ -55,11 +58,11 @@ public class Controlador implements ActionListener{
 		//llamado a la accion de los botones  
 		this.pnlIngresarPersona.getBtnAceptar().addActionListener(a->EventoClickBoton_AgregarPersona_PanelAgregarPersona(a));
 		this.pnlEliminarPersona.getBtnEliminarUsuario().addActionListener(e->EventoClickBoton_EliminarPersona_PanelEliminarPersona(e));
-		
 		this.pnlModificarPersona.getBtnModificar().addActionListener(m->EventoClickBoton_ModificarPersona_PanelModificarPersona(m));
-		//
+		
+		//llamado a la accion mouseclick
+		this.pnlModificarPersona.getListaModificarUsuario().addMouseListener(Click);
 	}
-
 
 	public void EventoClickBoton_EliminarPersona_PanelEliminarPersona(ActionEvent e) {
 		boolean estado=false;
@@ -140,6 +143,14 @@ public class Controlador implements ActionListener{
 		ventanaPrincipal.getContentPane().revalidate();
 		pnlModificarPersona.setListModelClear(listModel);
 		refrescarListaModificar();
+	}
+	
+	public void EventoClickLista_SeleccionarPersona_PanelModificarPersona() {
+		Persona persona = new Persona();
+		 if(pnlModificarPersona.getList().getSelectedValue()!=null) {
+			persona = this.pnlModificarPersona.getList().getSelectedValue();
+			pnlModificarPersona.setTxtNombre(persona.getNombre());
+		}
 		
 	}
 
@@ -177,6 +188,23 @@ public class Controlador implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public MouseListener getClick() {
+		return Click;
+	}
+
+
+	public void setClick(MouseListener click) {
+		Click = click;
+	}
+	
+	//@override
+	//probar con el MouseListener
+	public void Click(MouseEvent e) {
+		Persona per= new Persona();
+		per=listadoPersona.getSelectedValue();
+		pnlModificarPersona.setTxtNombre(per.getNombre());
 	}
 	
 
