@@ -50,16 +50,16 @@ public class PanelModificarPersona extends JPanel {
 		return txtApellido;
 	}
 
-	public void setTxtApellido(JTextField txtApellido) {
-		this.txtApellido = txtApellido;
+	public void setTxtApellido(String apellido) {
+		txtApellido.setText(apellido);
 	}
 
 	public JTextField getTxtDni() {
 		return txtDni;
 	}
 
-	public void setTxtDni(JTextField txtDni) {
-		this.txtDni = txtDni;
+	public void setTxtDni(String dni) {
+		txtDni.setText(dni);
 	}
 	
 	public JButton getBtnModificar() {
