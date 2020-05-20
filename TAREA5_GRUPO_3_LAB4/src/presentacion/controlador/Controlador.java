@@ -62,7 +62,7 @@ public class Controlador implements ActionListener {
 				.addActionListener(m -> EventoClickBoton_ModificarPersona_PanelModificarPersona(m));
 		eventList();
 		// llamado a la accion mouseclick
-	
+
 	}
 
 	public void EventoClickBoton_EliminarPersona_PanelEliminarPersona(ActionEvent e) {
@@ -155,6 +155,24 @@ public class Controlador implements ActionListener {
 		String dni = this.pnlModificarPersona.getTxtDni().getText();
 		String nombre = this.pnlModificarPersona.getTxtNombre().getText();
 		String apellido = this.pnlModificarPersona.getTxtApellido().getText();
+		String dniAux = this.pnlModificarPersona.getDniAux();
+
+		Persona modPersona = new Persona(dni, nombre, apellido);
+		boolean estado = perNeg.modificarPer(modPersona,dniAux);
+
+		String mensaje;
+
+		if (estado == true) {
+			mensaje = "Persona modificada con exito";
+			this.pnlModificarPersona.getTxtNombre().setText("");
+			this.pnlModificarPersona.getTxtDni().setText("");
+			this.pnlModificarPersona.getTxtApellido().setText("");
+		} else {
+			mensaje = "Persona no modificada, complete los campos";
+		}
+
+		this.pnlModificarPersona.mostrarMensaje(mensaje);
+		refrescarListaModificar();
 	}
 
 	public void refrescarListaModificar() {
@@ -216,6 +234,7 @@ public class Controlador implements ActionListener {
 				pnlModificarPersona.setTxtNombre(per.getNombre());
 				pnlModificarPersona.setTxtApellido(per.getApellido());
 				pnlModificarPersona.setTxtDni(per.getDni());
+				pnlModificarPersona.setDniAux(per.getDni());
 
 			}
 		});
